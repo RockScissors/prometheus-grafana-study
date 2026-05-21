@@ -21,14 +21,14 @@ public class ApiController {
     }
 
     // 동시성
-    @PostMapping("/tickets/purchase")
-    public String purchaseTicket() {
+    @PostMapping("/tickets/{ticketId}/purchase")
+    public String purchaseTicket(@PathVariable Long ticketId) {
         //인기 콘서트의 단 1개만 남은 잔여 좌석(Seat)에 몇백 명의 사용자가 동시에 예매 요청을 보낸다.
         // 서버 내부 로직에서   select  문으로 좌석 상태를 확인한 뒤
         // update 를 치는 과정 사이에 다중 스레드가 한꺼번에 진입한다.
         // 별도의 데이터베이스 락(비관적 락, 낙관적 락)이나 분산 락(Redis Redisson) 처리가 없기 때문에,
         // 동일한 좌석에 대한 여러 개의 성공 응답이 떨어지며 중복 예매 데이터가 생성된다.
-        return apiService.purchaseTicket(1L);
+        return apiService.purchaseTicket(ticketId);
     }
 
     // 커넥션 풀 고갈

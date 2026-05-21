@@ -1,4 +1,4 @@
-package com.example.monitoringstudy.config;
+package com.example.monitoringstudy.global;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;

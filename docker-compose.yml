@@ -1,10 +1,4 @@
 services:
-  springboot:
-    build: .
-    ports:
-      - "8080:8080"
-    networks:
-      - monitoring
 
   prometheus:
     image: prom/prometheus

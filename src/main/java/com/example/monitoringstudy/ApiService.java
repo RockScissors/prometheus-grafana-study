@@ -1,6 +1,6 @@
 package com.example.monitoringstudy;
 
-import com.example.monitoringstudy.config.CacheConfig;
+import com.example.monitoringstudy.global.CacheConfig;
 import com.example.monitoringstudy.domain.Event;
 import com.example.monitoringstudy.domain.Ticket;
 import com.example.monitoringstudy.repository.EventRepository;
@@ -36,7 +36,7 @@ public class ApiService {
         List<Event> events = eventRepository.findAll();
 
         for (Event event : events) {
-            String venueName = event.getVenue().getName();
+            Long venueId = event.getVenue().getId();
         }
 
         return "N+1 쿼리 폭발 완료";
